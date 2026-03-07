@@ -1,367 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lemon</title>
-    <style>
-        /* --- CSS VARIABLES & RESET --- */
-        :root {
-            /* Deep Dark Theme Colors */
-            --bg-color: #050505;          /* Almost black background */
-            --card-bg: #121212;           /* Slightly lighter for cards */
-            --nav-bg: #000000;            /* Solid black navbar */
-            --text-color: #e0e0e0;        /* Off-white text */
-            --text-muted: #a0a0a0;        /* Grey text */
-            --accent-color: #1F51FF;      /* Neon Green accent for high contrast */
-            --border-color: #333333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        /* --- NAVBAR STYLES (SOLID & VISIBLE) --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 70px;
-            background-color: var(--nav-bg); /* Solid Black */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color); /* Subtle border */
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5); /* Shadow for depth */
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-style: Uthura;
-            font-weight: bold;
-            color: var(--accent-color);
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--text-color);
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        /* Hover effect for links */
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-color);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu Button */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-color);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 70%);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
-
-        .hero span {
-            color: var(--accent-color);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-        }
-
-        .btn {
-            padding: 14px 35px;
-            background-color: var(--accent-color);
-            color: #000;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.3s;
-            border: 1px solid var(--accent-color);
-        }
-
-        .btn:hover {
-            background-color: transparent;
-            color: var(--accent-color);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
-        }
-
-        /* --- SECTIONS GENERAL --- */
-        section {
-            padding: 100px 10%;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--text-color);
-        }
-
-        /* --- PROJECTS GRID --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-        }
-
-        .card-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-
-        .card-content p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .card-link {
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* --- CONTACT FORM --- */
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        input, textarea {
-            padding: 15px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            border-radius: 4px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input:focus, textarea:focus {
-            border-color: var(--accent-color);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 3rem;
-            background-color: var(--card-bg);
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                right: 0;
-                height: calc(100vh - 70px);
-                background-color: var(--nav-bg);
-                flex-direction: column;
-                width: 100%;
-                align-items: center;
-                justify-content: center;
-                transform: translateX(100%);
-                transition: transform 0.3s ease-in-out;
-                border-top: 1px solid var(--border-color);
-            }
-
-            .nav-links.active {
-                transform: translateX(0%);
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .hero h1 { font-size: 2.5rem; }
-            section { padding: 60px 5%; }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio Website</title>
 </head>
 <body>
-
-    <!-- NAVBAR -->
     <header>
-        <div class="logo">Lemon.</div>
-        <div class="menu-toggle" id="mobile-menu">
-            ☰
-        </div>
+        <a href="#" class="logo">Alex</a>
+
         <nav>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#" class="active"> Home</a>
+            <a href="#" >Services</a>
+            <a href="#" >Skills</a>
+            <a href="#" >Education</a>
+            <a href="#" >Experience</a>
+            <a href="#" >Contact</a>
         </nav>
     </header>
-
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <h1>Hi I am<br> <span>Lemon</span></h1>
-        <p>I am a creative developer focused on building accessible, pixel-perfect user interfaces.</p>
-        <a href="#projects" class="btn">View My Socials</a>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section id="about">
-        <h2>About Me</h2>
-        <div style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-muted);">
-            <p>
-                I specialize in Web Development, BOT making, Server Management, Embed making, UI development and graphics desgining.
-            </p>
+    <section class="home">
+        <div class="home-img">
+            <img src="main.jpg" alt="">
+        </div>
+        <div class="home-content">
+            <h1>Hi, It's <span>Alex</span></h1>
+            <h3 class="typing-text">I'm a <span></span></h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <a href="#" class="btn">Hire me</a>
         </div>
     </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
-        <h2>Featured Links</h2>
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div class="card-content">
-                    <h3>Instagram</h3>
-                    <p>A journey into my world of socials.</p>
-                    <a href="https://www.instagram.com/fr_lemon_/" class="card-link">View Project &rarr;</a>
-                </div>
-            </div>
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div class="card-content">
-                    <h3>Spotify</h3>
-                    <p>Get into tuning with me!</p>
-                    <a href="https://open.spotify.com/user/31npko3acykpaxu7t5v4huads6le" class="card-link">View Project &rarr;</a>
-                </div>
-            </div>
-            <!-- Project 3 -->
-            <div class="project-card">
-                <div class="card-content">
-                    <h3>Task Master</h3>
-                    <p>A productivity application featuring drag-and-drop functionality and local storage.</p>
-                    <a href="#" class="card-link">View Project &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-container">
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Lemon. Built with pure HTML, CSS & JS.</p>
-    </footer>
-
-    <!-- JAVASCRIPT FOR MOBILE MENU -->
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
 </body>
 </html>
