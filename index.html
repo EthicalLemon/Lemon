@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,25 +9,31 @@
     <title>Lemons Portfolio</title>
 </head>
 <body>
+    <!-- video x -->
+    <video id="bg-video" autoplay muted loop>
+        <source src="BG_lemon.mp4" type="video/mp4">
+    </video>
     <header>
         <a href="#" class="logo">Lemon</a>
-
-        <nav>
-            <a href="#" class="active"> Home</a>
-            <a href="#" >About Me</a>
-            <a href="#" >Skills</a>
-            <a href="#" >Education</a>
-            <a href="#" >Experience</a>
-            <a href="#" >Contact</a>
-        </nav>
     </header>
+    <footer>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#"><i class="fa-solid fa-user"></i>About Me</a>
+            <a href="#"><i class="fa-solid fa-code"></i>Skills</a>
+            <a href="#"><i class="fa-solid fa-graduation-cap"></i>Education</a>
+            <a href="#"><i class="fa-solid fa-briefcase"></i>Experience</a>
+            <a href="#"><i class="fa-solid fa-envelope"></i>Contact</a>
+        </nav>
+    </footer>
     <section class="home">
         <div class="home-img">
-            <img src="main.jpg" alt="">
+          <img src="image.png" alt="Lemon">
+            <canvas id="canvas"></canvas>
         </div>
         <div class="home-content">
             <h1>Hi, It's <span>Lemon</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
+            <h3 class="typing-text"><span></span></h3>
             <p>I am front-end UI designer, Web Dev and I also make Discord Bots!</p>
             <div class="social-icons">
                 <a href="#"><i class="fa-brands fa-linkedin"></i></a>
@@ -38,5 +44,7 @@
             <a href="#" class="btn">Contact Me</a>
         </div>
     </section>
+    <script src="https://kit.fontawesome.com/902ac26580.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>
