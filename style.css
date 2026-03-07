@@ -32,6 +32,12 @@ body{
   object-fit: cover; /* Ensures video covers screen without distortion */
 }
 
+.content {
+  position: relative;
+  z-index: 1; /* Ensures content is above video */
+}
+
+
 
 header{
     margin-top: 20px;
