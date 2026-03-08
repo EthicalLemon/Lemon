@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
 *{
@@ -18,28 +19,45 @@ body{
     width: 100%;
     height: 100vh;
     overflow-x: hidden;
-    background-color: black;
+    background-color: transparent;
     color: white;
 }
 
-.back-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1; /* Pushes the video behind content */
-  object-fit: cover; /* Ensures video covers screen without distortion */
+canvas{
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Black at 50% opacity */
-  z-index: 0; /* Sits between the video (-1) and text (1) */
+/* background video styling */
+#bg-video{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1; /* sit behind content but above body */
+}
+
+/* move nav to bottom */
+footer nav{
+    display: flex;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 1.6rem; /* lifted a bit */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 25;
+}
+
+header{
+    position: relative;
+    z-index: 23;
 }
 
 
@@ -47,20 +65,24 @@ header{
     margin-top: 20px;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1rem 9%;
-    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    padding: 1rem 2rem;
+    background-color: rgba(255, 112, 112, 0.365);
+    border-radius: 20px;
     filter: drop-shadow(10px);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 23;
+    gap: 2rem;
+    border: white solid 0.5rem;
 }
 
 .logo{
     font-size: 3rem;
-    color: #b74b4b;
+    color: #ffffff;
     font-weight: 800;
     cursor: pointer;
     transition: 0.5s ease;
@@ -77,11 +99,14 @@ nav a{
     font-weight: 500;
     transition: 0.3s ease;
     border-bottom: 3px solid transparent;
+    margin-top: -1rem;
+
 }
+
 
 nav a:hover,
 nav a.active{
-    color: #b74b4b;
+    color: #ffffff;
     border-bottom: 3px solid #b74b4b;
 }
 
@@ -96,8 +121,9 @@ nav a.active{
         border-bottom: 3px solid #b74b4b;
         border-bottom-left-radius: 2rem;
         padding: 1rem solid;
-        background-color: #161616;
+        background-color: #ffffff;
         border-top: 0.1rem solid rgba(0,0,0,0.1);
+
     }
 
     nav.active{
@@ -153,20 +179,13 @@ span{
 
 .home-img{
     border-radius: 50%;
-}
-
-.home-img img{
-    position: relative;
     width: 32vw;
-    border-radius: 50%;
-    box-shadow: 0 0 25px solid #b74b4b;
-    cursor: pointer;
-    transition: 0.2s linear;
-}
-
-.home-img img:hover{
-    font-size: 1.8rem;
-    font-weight: 500;
+    height: 32vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(183, 75, 75, 0.6);
 }
 
 .social-icons a{
@@ -222,12 +241,6 @@ span{
     position: relative;
 }
 
-.typing-text span::before{
-    content: "software Developer";
-    color: #b74b4b;
-    animation: words 20s infinite;
-}
-
 .typing-text span::after{
     content: "";
     background-color: black;
@@ -242,24 +255,6 @@ span{
 @keyframes cursor{
     to{
         border-left: 3px solid #b74b4b;
-    }
-}
-
-@keyframes words{
-    0%, 20%{
-        content: "Web Developer";
-    }
-    21%, 40%{
-        content: "Developer";
-    }
-    41%, 60%{
-        content: "Web Designer";
-    }
-    61%, 80%{
-        content: "UI/Graphic designer";
-    }
-    81%, 100%{
-        content: "Script Writer";
     }
 }
 
@@ -288,6 +283,3 @@ span{
         margin-top: 4rem;
     }
 }
-
-
-
