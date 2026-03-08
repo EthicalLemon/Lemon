@@ -1,52 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta name="description" content="Personal Portfolio - Lemon Theme">
+    <title>Lemon Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (Optional for Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <title>Lemons Portfolio</title>
 </head>
 <body>
-    <!-- video x -->
-    <video autoplay muted loop playsinline class="back-video">
-  <source src="video.mp4" type="video/mp4">
-</video>
-<div class="content">...</div>
 
-    <header>
-        <a href="#" class="logo">Lemon</a>
-    </header>
-    <footer>
-        <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#"><i class="fa-solid fa-user"></i>About Me</a>
-            <a href="#"><i class="fa-solid fa-code"></i>Skills</a>
-            <a href="#"><i class="fa-solid fa-graduation-cap"></i>Education</a>
-            <a href="#"><i class="fa-solid fa-briefcase"></i>Experience</a>
-            <a href="#"><i class="fa-solid fa-envelope"></i>Contact</a>
-        </nav>
-    </footer>
-    <section class="home">
-        <div class="home-img">
-          <img src="Lemon.png" alt="Lemon">
-            <canvas id="canvas"></canvas>
-        </div>
-        <div class="home-content">
-            <h1>Hi, It's <span>Lemon</span></h1>
-            <h3 class="typing-text"><span></span></h3>
-            <p>I am front-end UI designer, Web Dev and I also make Discord Bots!</p>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Lemon<span>.</span></a>
+            
+            <nav class="nav" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <a href="#" class="btn">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Lemon</span></h1>
+                <p>Web Developer & UI/UX Designer</p>
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+            </div>
         </div>
     </section>
-    <script src="https://kit.fontawesome.com/902ac26580.js" crossorigin="anonymous"></script>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <!-- Replace with your actual image path -->
+                    <img src="images/profile.jpg" alt="Profile Picture" onerror="this.src='https://via.placeholder.com/400x400?text=Profile'">
+                </div>
+                <div class="about-text">
+                    <h3>Who am I?</h3>
+                    <p>I create clean, efficient, and user-friendly websites. Passionate about coding and design, I bring ideas to life with modern technologies.</p>
+                    <div class="skills">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>React</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <form class="contact-form" id="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Lemon Portfolio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
