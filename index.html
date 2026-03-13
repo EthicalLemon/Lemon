@@ -3,72 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal Portfolio - Lemon Theme">
-    <title>Lemon Portfolio</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome (Optional for Icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Stylesheet -->
+    <title>Lemon - Creative Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
-    <!-- Header & Navigation -->
+    <!-- Header -->
     <header class="header">
-        <div class="container">
-            <a href="#" class="logo">Lemon<span>.</span></a>
-            
-            <nav class="nav" id="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>Lemon</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#works">Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-            </nav>
-
-            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-        </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container">
+        <div class="hero-container">
             <div class="hero-content">
-                <h1>Hi, I'm <span class="highlight">Lemon</span></h1>
-                <p>Web Developer & UI/UX Designer</p>
-                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <h1 class="hero-title">Creative <span class="gradient-text">Lemon</span></h1>
+                <p class="hero-subtitle">I design and develop beautiful digital experiences that make people say "Wow!"</p>
+                <div class="hero-buttons">
+                    <a href="#works" class="btn btn-primary">See My Works</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">✨</div>
+                <div class="floating-card delay-1">🚀</div>
+                <div class="floating-card delay-2">💡</div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <div class="about-image">
-                    <!-- Replace with your actual image path -->
-                    <img src="images/profile.jpg" alt="Profile Picture" onerror="this.src='https://via.placeholder.com/400x400?text=Profile'">
-                </div>
+            <div class="about-content">
                 <div class="about-text">
-                    <h3>Who am I?</h3>
-                    <p>I create clean, efficient, and user-friendly websites. Passionate about coding and design, I bring ideas to life with modern technologies.</p>
+                    <h3>Hi, I'm a Creative Developer</h3>
+                    <p>I create stunning websites and web applications with modern technologies. Passionate about clean code, beautiful design, and creating memorable user experiences.</p>
                     <div class="skills">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
+                        <div class="skill-item">
+                            <span>Frontend</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Backend</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="works">
+        <div class="container">
+            <h2 class="section-title">My Works</h2>
+            <div class="works-grid">
+                <!-- Work Item 1 -->
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop" alt="E-commerce Dashboard">
+                        <div class="work-overlay">
+                            <a href="https://example.com/ecommerce" class="work-link" target="_blank">Live Demo</a>
+                            <a href="https://github.com/yourusername/ecommerce-dashboard" class="work-github" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <h3>E-commerce Dashboard</h3>
+                    <p>Modern dashboard for e-commerce analytics with real-time data visualization and intuitive UI.</p>
+                    <div class="work-tech">
                         <span>React</span>
+                        <span>Chart.js</span>
+                        <span>Tailwind</span>
+                    </div>
+                </div>
+
+                <!-- Work Item 2 -->
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop" alt="Task Management App">
+                        <div class="work-overlay">
+                            <a href="https://example.com/taskapp" class="work-link" target="_blank">Live Demo</a>
+                            <a href="https://github.com/yourusername/task-manager" class="work-github" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <h3>Task Management App</h3>
+                    <p>Collaborative task manager with drag & drop, real-time sync, and team collaboration features.</p>
+                    <div class="work-tech">
+                        <span>Vue.js</span>
+                        <span>Firebase</span>
+                        <span>SCSS</span>
+                    </div>
+                </div>
+
+                <!-- Work Item 3 -->
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=300&fit=crop" alt="Portfolio Website">
+                        <div class="work-overlay">
+                            <a href="https://example.com/portfolio" class="work-link" target="_blank">Live Demo</a>
+                            <a href="https://github.com/yourusername/portfolio" class="work-github" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <h3>Interactive Portfolio</h3>
+                    <p>Personal portfolio with glassmorphism design, smooth animations, and 3D interactions.</p>
+                    <div class="work-tech">
+                        <span>Svelte</span>
+                        <span>Three.js</span>
+                        <span>GSAP</span>
+                    </div>
+                </div>
+
+                <!-- Work Item 4 -->
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=300&fit=crop" alt="Weather App">
+                        <div class="work-overlay">
+                            <a href="https://example.com/weather" class="work-link" target="_blank">Live Demo</a>
+                            <a href="https://github.com/yourusername/weather-app" class="work-github" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <h3>Weather Dashboard</h3>
+                    <p>Real-time weather app with beautiful animations, forecasts, and location-based features.</p>
+                    <div class="work-tech">
+                        <span>Next.js</span>
+                        <span>OpenWeather</span>
+                        <span>Framer Motion</span>
                     </div>
                 </div>
             </div>
@@ -76,31 +169,47 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section bg-light">
+    <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <form class="contact-form" id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's create something amazing together!</h3>
+                    <p>Ready to bring your ideas to life? Send me a message and let's discuss your project.</p>
+                    <div class="contact-links">
+                        <a href="mailto:hello@yourwebsite.com" class="contact-link">
+                            <i class="fas fa-envelope"></i> hello@yourwebsite.com
+                        </a>
+                        <a href="https://twitter.com/yourusername" class="contact-link" target="_blank">
+                            <i class="fab fa-twitter"></i> @yourusername
+                        </a>
+                        <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/yourusername" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 Lemon Portfolio. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
+            <p>&copy; 2024 Lemon. Made with ❤️ for awesome projects.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
