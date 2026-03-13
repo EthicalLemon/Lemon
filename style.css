@@ -1009,7 +1009,7 @@ html {
     z-index: 99999 !important;
     
     /* CHANGE THIS LINE: Set your starting color here */
-    background-color: #0000 !important; /* A solid dark charcoal */
+    background-color: #1a1a1a !important; /* A solid dark charcoal */
     backdrop-filter: blur(15px) !important;
     
     transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.3s ease !important;
