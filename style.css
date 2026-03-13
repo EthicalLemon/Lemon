@@ -31,6 +31,8 @@ body {
 
 .navbar {
     padding: 1rem 0;
+    background-color: wheat;
+    background-image: linear-gradient(45deg, #d008c3, #7700ff);
 }
 
 .nav-container {
@@ -43,7 +45,7 @@ body {
 }
 
 .logo h2 {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #424242, #070707);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -57,7 +59,7 @@ body {
 
 .nav-menu a {
     text-decoration: none;
-    color: #333;
+    color: #e30808;
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
@@ -97,7 +99,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #4a8aea 0%, #40d4c15e 100%);
     padding: 100px 0 50px;
 }
 
@@ -119,7 +121,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #810b0b, #7c1444);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -127,7 +129,7 @@ body {
 
 .hero-subtitle {
     font-size: 1.3rem;
-    color: #666;
+    color: #293836;
     margin-bottom: 2.5rem;
     max-width: 500px;
 }
@@ -197,7 +199,7 @@ body {
     font-size: 3rem;
     text-align: center;
     margin-bottom: 3rem;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #0e0e0f, #091691);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -206,7 +208,7 @@ body {
 /* About Section */
 .about {
     padding: 100px 0;
-    background: white;
+     background: linear-gradient(45deg, #99128b, #9a19da);
 }
 
 .about-content {
@@ -219,11 +221,11 @@ body {
 .about-text h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #222222;
 }
 
 .about-text p {
-    color: #666;
+    color: #000000;
     font-size: 1.1rem;
     margin-bottom: 2rem;
     line-height: 1.8;
@@ -239,7 +241,7 @@ body {
     display: block;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #272626;
 }
 
 .skill-bar {
@@ -259,7 +261,7 @@ body {
 .image-placeholder {
     width: 400px;
     height: 400px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #000000, #041cba);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -329,3 +331,109 @@ body {
     gap: 1rem;
     opacity: 0;
     transition: opacity 0.3
+}
+
+form {
+    display: grid;
+    margin-top: 1.5em;
+    unicode-bidi: isolate;
+}
+
+a:-webkit-any-link {
+    color: bisque;
+    cursor: pointer;
+    
+}
+
+.contact-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.contact-links a{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    font-size:18px;
+    color:#1a4cff;
+    padding:6px 12px;
+    border-radius:6px;
+    transition:0.2s ease;
+}
+
+.contact-links a:hover{
+    background:#eef2ff;
+    transform:translateY(-2px);
+}
+
+.contact-links i{
+    font-size:18px;
+}
+
+.contact-form{
+    width:80%;
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.input-row{
+    display:flex;
+    gap:20px;
+}
+
+.input-row input{
+    flex:1;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+    font-family:inherit;
+}
+
+.contact-form textarea{
+    resize:vertical;
+}
+
+.contact-form button{
+    padding:16px;
+    border:none;
+    border-radius:40px;
+    font-size:18px;
+    font-weight:600;
+    color:white;
+    cursor:pointer;
+    background:linear-gradient(90deg,#667eea,#764ba2);
+    transition:0.2s;
+}
+
+.contact-form button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.footer-text{
+    text-align:center;
+}
+
