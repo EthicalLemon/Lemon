@@ -238,27 +238,42 @@ body {
         </div>
     </section>
 
+
+
+
+
+
+
+
+
+<div id="articleModal" class="modal">
+    <div class="modal-content">
+    <span class="close-btn" onclick="closeArticle()">&times;</span>
+    <iframe src="Understanding the Criminal Mind.pdf" width="100%" height="600px" style="border:none; border-radius:10px;"></iframe>
+</div>
+    </div>
+</div>
+
     <!-- Works Section -->
     <section id="works" class="works">
         <div class="container">
             <h2 class="section-title">My Works</h2>
             <div class="works-grid">
                 <!-- Work Item 1 -->
-                <div class="work-item">
+                <div class="work-item" onclick="openArticle()" style="cursor: pointer;">
     <div class="work-image">
-        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&h=300&fit=crop" alt="Get My Website Code!">
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=300&fit=crop" alt="Article Thumbnail">
         <div class="work-overlay">
-           <a href="https://github.com/EthicalLemon" class="work-link stretched-link" target="_blank">Live Demo</a>
-            <a href="https://github.com/EthicalLemon" class="work-github" target="_blank">GitHub</a>
+            <span class="work-link">Read Article</span>
         </div>
     </div>
-    <h3>Get My Website Code!</h3>
-    <p>Modern website built with HTML, CSS, and JavaScript. For the smoothest user experience.</p>
+    <h3>The Future of Aviation</h3>
+    <p>An in-depth look at virtual airline operations and flight simulation trends.</p>
     <div class="work-tech">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
+        <span>Article</span>
+        <span>Aviation</span>
     </div>
+</div>
 </div>
 
                 <!-- Work Item 2 -->
