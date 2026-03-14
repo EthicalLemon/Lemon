@@ -1,1279 +1,263 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Header */
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(120, 100, 111, 0.95);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-/* DESKTOP NAV - ALWAYS VISIBLE */
+// Add to your existing smooth scroll code
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
 
 
-/* HAMBURGER - HIDDEN ON DESKTOP */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
+// Mobile menu toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
 
-/* MOBILE - HIDE DESKTOP NAV, SHOW HAMBURGER */
-@media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background: rgba(170, 43, 77, 0.98);
-        backdrop-filter: blur(20px);
-        flex-direction: column !important;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 2rem 0;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        z-index: 999;
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+}));
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Mobile menu toggle
+document.querySelector('.hamburger')?.addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-menu').classList.toggle('active');
+});
+
+// Close menu on link click
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.hamburger')?.classList.remove('active');
+        document.querySelector('.nav-menu')?.classList.remove('active');
+    });
+});
+
+// Animate skill bars
+window.addEventListener('scroll', () => {
+    const skills = document.querySelectorAll('.skill-progress');
+    skills.forEach(skill => {
+        const skillTop = skill.offsetTop;
+        const skillHeight = skill.offsetHeight;
+        if (window.scrollY > (skillTop - window.innerHeight + skillHeight)) {
+            skill.style.width = skill.getAttribute('style').split('width: ')[1];
+        }
+    });
+});
+
+// Ultimate Mobile Menu
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    });
+    
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+});
+
+document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-menu').classList.toggle('active');
+});
+
+
+// Navbar scroll effect + mobile menu
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Mobile menu toggle
+document.querySelector('.hamburger').addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.querySelector('.hamburger').classList.toggle('active');
+    document.querySelector('.nav-menu').classList.toggle('active');
+});
+
+// Close on outside click
+document.addEventListener('click', (e) => {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
+
+// Close on link click
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.hamburger').classList.remove('active');
+        document.querySelector('.nav-menu').classList.remove('active');
+    });
+});
+
+
+
+
+
+
+
+
+
+// Floating navbar functionality
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.glass-navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
     }
     
-    .nav-menu.active {
-        transform: translateX(0);
-    }
+    // Active link highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-menu a[data-page]');
     
-    .nav-menu li {
-        margin: 1rem 0;
-        opacity: 0;
-        transform: translateX(-20px);
-        animation: slideIn 0.3s ease forwards;
-    }
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
     
-    .nav-menu li:nth-child(1) { animation-delay: 0.05s; }
-    .nav-menu li:nth-child(2) { animation-delay: 0.1s; }
-    .nav-menu li:nth-child(3) { animation-delay: 0.15s; }
-    .nav-menu li:nth-child(4) { animation-delay: 0.2s; }
-    
-    @keyframes slideIn {
-        to { opacity: 1; transform: translateX(0); }
-    }
-    
-    .hamburger {
-        display: flex !important;
-        width: 40px;
-        height: 40px;
-        padding: 8px;
-        background: rgba(255,255,255,0.2);
-        border-radius: 10px;
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255,255,255,0.3);
-    }
-    
-    .hamburger span {
-        width: 20px;
-        height: 2px;
-        background: #667eea;
-        border-radius: 1px;
-        transition: all 0.3s ease;
-    }
-    
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(4px, 4px);
-    }
-    
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(4px, -4px);
-    }
-}
-
-.logo h2 {
-    background: linear-gradient(45deg, #424242, #070707);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-menu a {
-    text-decoration: none;
-    color: #e30808;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.nav-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    transition: width 0.3s ease;
-}
-
-.nav-menu a:hover::after {
-    width: 100%;
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: #333;
-    margin: 3px 0;
-    transition: 0.3s;
-}
-
-/* Hero Section */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #4a8aea 0%, #40d4c15e 100%);
-    padding: 100px 0 50px;
-}
-
-.hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.hero-title {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-}
-
-.gradient-text {
-    background: linear-gradient(45deg, #810b0b, #7c1444);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-subtitle {
-    font-size: 1.3rem;
-    color: #293836;
-    margin-bottom: 2.5rem;
-    max-width: 500px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.6);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: #667eea;
-    border: 2px solid #667eea;
-}
-
-.btn-secondary:hover {
-    background: #667eea;
-    color: white;
-    transform: translateY(-3px);
-}
-
-.hero-image {
-    position: relative;
-    height: 500px;
-}
-
-.floating-card {
-    position: absolute;
-    font-size: 3rem;
-    animation: float 6s ease-in-out infinite;
-}
-
-.floating-card:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-.floating-card:nth-child(2) { top: 60%; right: 20%; animation-delay: -2s; }
-.floating-card:nth-child(3) { top: 10%; right: 10%; animation-delay: -4s; }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-/* Section Titles */
-.section-title {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    background: linear-gradient(45deg, #0e0e0f, #091691);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* About Section */
-.about {
-    padding: 100px 0;
-     background: linear-gradient(45deg, #99128b, #9a19da);
-}
-
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.about-text h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #222222;
-}
-
-.about-text p {
-    color: #000000;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    line-height: 1.8;
-}
-
-.skills {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.skill-item span {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #272626;
-}
-
-.skill-bar {
-    height: 8px;
-    background: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    border-radius: 10px;
-    transition: width 2s ease;
-}
-
-.image-placeholder {
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(135deg, #000000, #041cba);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8rem;
-    color: white;
-    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-}
-
-/* Works Section */
-.works {
-    padding: 100px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.work-item {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.work-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.work-image {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    height: 250px;
-    margin-bottom: 1.5rem;
-}
-
-.work-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.work-item:hover .work-image img {
-    transform: scale(1.1);
-}
-
-.work-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    opacity: 0;
-    transition: opacity 0.3
-}
-
-
-/* --- Clickable Card Styles --- */
-.card-container {
-  position: relative; /* Keeps the link contained within the card */
-  cursor: pointer;    /* Gives the user a visual cue it's clickable */
-  transition: transform 0.3s ease;
-}
-
-/* Optional: Slight lift effect when hovering over the card */
-.card-container:hover {
-  transform: translateY(-5px);
-}
-
-.stretched-link::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1; /* This invisible layer covers the entire card */
-}
-
-form {
-    display: grid;
-    margin-top: 1.5em;
-    unicode-bidi: isolate;
-}
-
-a:-webkit-any-link {
-    color: bisque;
-    cursor: pointer;
-    
-}
-
-.contact-links{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:25px;
-    margin-top:20px;
-    flex-wrap:wrap;
-}
-
-.contact-links a{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    text-decoration:none;
-    font-size:18px;
-    color:#1a4cff;
-    padding:6px 12px;
-    border-radius:6px;
-    transition:0.2s ease;
-}
-
-.contact-links a:hover{
-    background:#eef2ff;
-    transform:translateY(-2px);
-}
-
-.contact-links i{
-    font-size:18px;
-}
-
-.contact-form{
-    width:80%;
-    max-width:900px;
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
-
-
-/* Styling the form container specifically */
-.contact-form {
-    border: 2px solid rgba(255, 255, 255, 0.2); /* Visible white-ish border */
-    background: rgba(255, 255, 255, 0.05);     /* Subtle glass tint */
-    padding: 30px;                             /* Space inside the border */
-    border-radius: 15px;                       /* Rounded corners */
-    backdrop-filter: blur(10px);               /* Glass blur effect */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
-}
-
-/* Ensure inputs inside the border look sharp */
-.contact-form input, 
-.contact-form textarea {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
-    margin-bottom: 20px;
-}
-
-/* Optional: Make the border glow when the user interacts with the form */
-.contact-form:focus-within {
-    border-color: rgba(102, 126, 234, 0.6); /* Purple/Blue glow */
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
-}
-
-
-#contact {
-    /* The Border */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Soft white border */
-    
-    /* Styling the container */
-    background: rgba(255, 255, 255, 0.03); /* Extremely faint glass tint */
-    border-radius: 20px; /* Rounded corners to match your cards */
-    padding: 40px;
-    margin: 50px auto;
-    max-width: 1100px; /* Keeps the section from stretching too wide */
-    
-    /* Optional: Subtle Outer Glow */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-.input-row{
-    display:flex;
-    gap:20px;
-}
-
-.input-row input{
-    flex:1;
-}
-
-.contact-form input, 
-.contact-form textarea {
-    /* Visible border for input fields */
-    border: 1.5px solid rgba(255, 255, 255, 0.3); 
-    background: rgba(0, 0, 0, 0.2); /* Darker background for contrast */
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-/* Change border color when clicking into the box */
-.contact-form input:focus, 
-.contact-form textarea:focus {
-    border-color: #667eea; /* Purple/Blue highlight */
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.contact-form textarea{
-    resize:vertical;
-}
-
-.contact-form button{
-    padding: 15px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.contact-form button:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-}
-
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
-}
-
-.footer-text{
-    text-align:center;
-}
-
-
-/* MOBILE RESPONSIVE - ADD THIS TO YOUR EXISTING style.css */
-
-/* Tablets and up */
-@media (min-width: 768px) {
-    .hero-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: row;
-        max-width: none;
-    }
-    
-    .btn {
-        width: auto;
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr 1fr;
-        text-align: left;
-    }
-    
-    .works-grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-    }
-    
-    .contact-content {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-/* Mobile Menu */
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.98);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0,0,0,0.1);
-        padding: 2rem 0;
-        backdrop-filter: blur(20px);
-    }
-    
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    .hero {
-        text-align: center;
-        padding: 120px 0 50px;
-    }
-    
-    .hero-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .hero-title {
-        font-size: 2.8rem;
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .works-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .work-item {
-        padding: 1.5rem;
-    }
-    
-    .work-image {
-        height: 200px;
-    }
-    
-    .work-overlay {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .contact-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .contact-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .form-group {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    .hero-title {
-        font-size: 2.2rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .about, .works, .contact {
-        padding: 60px 0;
-    }
-    
-    .work-image {
-        height: 180px;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-menu li {
-        margin: 1rem 0;
-    }
-    
-    .nav-menu a {
-        font-size: 1.3rem;
-        padding: 1rem 2rem;
-        display: block;
-        border-radius: 15px;
-        background: rgba(102, 126, 234, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(102, 126, 234, 0.2);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .nav-menu a::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-        transition: left 0.5s;
-    }
-    
-    .nav-menu a:hover::before {
-        left: 100%;
-    }
-    
-    .nav-menu a:hover {
-        background: rgba(102, 126, 234, 0.2);
-        transform: translateX(10px);
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        color: #667eea !important;
-    }
-}
-
-
-/* FLOATING BOTTOM GLASS NAVBAR */
-/* PERFECT BOTTOM FLOATING NAVBAR */
-/* BULLETPROOF BOTTOM FLOATING NAVBAR */
-#glassNavbar {
-    /* POSITIONING */
-    position: fixed !important;
-    bottom: 20px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    
-    /* SIZING */
-    width: min(90vw, 420px) !important;
-    min-height: 70px !important;
-    
-    /* GLASS EFFECT */
-    background: rgba(255, 255, 255, 0.3) !important;
-    backdrop-filter: blur(30px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    border-radius: 40px !important;
-    
-    /* SHADOW */
-    box-shadow: 
-        0 20px 60px rgba(0,0,0,0.2),
-        0 8px 25px rgba(0,0,0,0.1),
-        inset 0 1px 0 rgba(255,255,255,0.6) !important;
-    
-    /* LAYOUT */
-    z-index: 99999 !important;
-    padding: 16px 24px !important;
-    margin: 0 !important;
-    
-    /* ANIMATION */
-    transition: all 0.3s ease !important;
-}
-
-/* CONTENT */
-.navbar {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    height: 100% !important;
-}
-
-.nav-container {
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    padding: 0 !important;
-}
-
-.logo h2 {
-    font-size: 1.2rem !important;
-    background: linear-gradient(135deg, #667eea, #764ba2) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    margin: 0 !important;
-}
-
-.nav-menu {
-    display: flex !important;
-    list-style: none !important;
-    gap: 20px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.nav-menu a {
-    color: #333 !important;
-    font-size: 1.1rem !important;
-    padding: 12px !important;
-    border-radius: 16px !important;
-    transition: all 0.3s ease !important;
-    display: flex !important;
-    align-items: center !important;
-}
-
-.nav-menu a:hover {
-    background: rgba(102, 126, 234, 0.2) !important;
-    transform: scale(1.1) !important;
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-    #glassNavbar {
-        bottom: 15px !important;
-        width: 95vw !important;
-        border-radius: 30px !important;
-    }
-}
-
-/* BODY PADDING */
-body {
-    padding-bottom: 100px !important;
-}
-/* SAFE AREA FOR IPHONE NOTCH */
-@supports (padding: max(0px)) {
-    .glass-navbar {
-        padding-bottom: max(20px, env(safe-area-inset-bottom));
-        bottom: max(30px, env(safe-area-inset-bottom));
-    }
-}
-
-/* Hover lift effect */
-.glass-navbar:hover {
-    bottom: 34px;
-    transform: translateX(-50%) translateY(-6px);
-    box-shadow: 
-        0 35px 80px -15px rgba(0, 0, 0, 0.3),
-        0 12px 32px -10px rgba(0, 0, 0, 0.2);
-}
-
-/* Scrolled state */
-.glass-navbar.scrolled {
-    bottom: 24px;
-}
-
-.glass-navbar.scrolled:hover {
-    bottom: 28px;
-}
-
-/* Ensure body has padding */
-body {
-    padding-bottom: 120px; /* SPACE FOR NAVBAR */
-}
-
-/* RESPONSIVE */
-@media (max-width: 480px) {
-    .glass-navbar {
-        bottom: 25px;
-        width: 95vw;
-        padding: 16px 20px;
-        border-radius: 28px;
-    }
-    
-    body {
-        padding-bottom: 100px;
-    }
-}
-
-/* Hover/Lift effect */
-.glass-navbar:hover {
-    transform: translateX(-50%) translateY(-8px);
-    box-shadow: 
-        0 32px 80px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-}
-
-/* Navbar content */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0;
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0 8px;
-}
-
-.logo {
-    flex-shrink: 0;
-}
-
-.logo h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 0;
-    white-space: nowrap;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 24px;
-    margin: 0;
-    padding: 0;
-    flex: 1;
-    justify-content: center;
-}
-
-.nav-menu li {
-    margin: 0;
-}
-
-.nav-menu a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(51, 51, 51, 0.85);
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    backdrop-filter: blur(10px);
-    white-space: nowrap;
-}
-
-.nav-menu a i {
-    font-size: 1.1rem;
-    width: 20px;
-}
-
-/* Active/Hover states */
-.nav-menu a:hover,
-.nav-menu a.active {
-    background: rgba(102, 126, 234, 0.15);
-    color: #667eea;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
-}
-
-.nav-menu a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 24px;
-    height: 2px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 1px;
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-    .glass-navbar {
-        width: 95%;
-        bottom: 20px;
-        padding: 12px;
-        border-radius: 28px;
-    }
-    
-    .logo h2 {
-        font-size: 1.1rem;
-    }
-    
-    .nav-menu {
-        gap: 12px;
-    }
-    
-    .nav-menu a {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-        border-radius: 16px;
-    }
-    
-    .nav-menu a i {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .glass-navbar {
-        width: 98%;
-        bottom: 16px;
-        padding: 10px;
-    }
-    
-    .nav-menu {
-        gap: 8px;
-    }
-    
-    .nav-menu a {
-        padding: 8px 12px;
-        font-size: 0.8rem;
-    }
-}
-
-/* Scroll indicator */
-.glass-navbar::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(102, 126, 234, 0.5) 50%, 
-        transparent 100%);
-    border-radius: 2px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.glass-navbar.scrolled::after {
-    opacity: 1;
-}
-
-/* Smooth scroll */
-html {
-    scroll-behavior: smooth;
-}
-
-
-/* Modern Logo-Only Styling */
-
-
-/* FORCE THE TOP NAVBAR TO APPEAR */
-.navbar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 80px !important;
-    display: flex !important;
-    align-items: center !important;
-    padding: 0 5% !important;
-    z-index: 99999 !important;
-    
-    /* CHANGE THIS LINE: Set your starting color here */
-    background-color: #1a1a1a !important; /* A solid dark charcoal */
-    backdrop-filter: blur(15px) !important;
-    
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.3s ease !important;
-    transform: translateY(0);
-}
-
-/* This is what the JS triggers */
-.navbar-hidden {
-    transform: translateY(-100%) !important;
-}
-
-/* This makes it look premium once you scroll */
-.navbar-scrolled {
-    background-color: rgba(0, 0, 0, 0.8) !important; /* Turns slightly darker/translucent */
-    backdrop-filter: blur(15px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Make sure the text is visible */
-.logo h2 {
-    color: #fff !important;
-    font-size: 24px !important;
-    margin: 0 !important;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-
-
-/* Interaction: Logo grows and glows brighter on hover */
-.logo:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.7));
-}
-
-
-
-
-.card-container {
-  position: relative; /* Essential for the stretch to stay inside the card */
-}
-
-.stretched-link::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1; /* Makes the invisible layer cover everything */
-}
-
-
-
-
-
-.work-item {
-    position: relative; /* This is the "anchor" for the stretched link */
-    transition: transform 0.3s ease;
-}
-
-.work-item:hover {
-    transform: translateY(-5px); /* Adds a nice hover lift effect */
-}
-
-.stretched-link::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    content: "";
-}
-
-/* Ensure secondary buttons (like the GitHub link) stay on top so they remain clickable */
-.work-github {
-    position: relative;
-    z-index: 2;
-}
-
-
-
-/* Makes the entire card clickable */
-.work-item {
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.work-item:hover {
-    transform: translateY(-8px);
-}
-
-.stretched-link::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    content: "";
-}
-
-/* Keeps GitHub button clickable on top of the stretched link */
-.work-github {
-    position: relative;
-    z-index: 2;
-    padding: 8px 15px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    color: white;
-    text-decoration: none;
-}
-
-
-
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* Ensure the contact form inputs look consistent with your glass theme */
-.contact-form input, .contact-form textarea {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 12px;
-    padding: 12px;
-    color: white;
-    margin-bottom: 15px;
-}
-
-
-
-
-
-/* Ensure the grid is active */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr; /* Info on left, Form on right */
-    gap: 40px;
-    padding: 20px;
-    align-items: start;
-    text-align: left; /* Fixes the centering issue */
-}
-
-/* Glass effect for the inputs */
-.contact-form input, 
-.contact-form textarea {
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.1); /* Subtle white glass */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    color: white;
-    outline: none;
-}
-
-/* The purple Send button */
-.submit-btn {
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.submit-btn:hover {
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
-    transform: scale(1.05);
-}
-
-/* Vertical stack for the social links */
-.contact-links {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-}
-
-.contact-btn {
-    text-decoration: none;
-    color: #a0aec0; /* Lighter grey */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.3s;
-}
-
-.contact-btn:hover {
-    color: #fff;
-}
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-page') === current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Smooth scrolling for nav links
+document.querySelectorAll('.nav-menu a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+
+// Floating navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.glass-navbar');
+    navbar.classList.toggle('scrolled', window.scrollY > 100);
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href'))?.scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+
+
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', function() {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  // 1. Handle Transparency
+  if (scrollTop > 50) {
+    navbar.classList.add('navbar-scrolled');
+  } else {
+    navbar.classList.remove('navbar-scrolled');
+  }
+
+  // 2. Handle Hiding/Showing
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+    // Scrolling Down - Hide
+    navbar.classList.add('navbar-hidden');
+  } else {
+    // Scrolling Up - Show
+    navbar.classList.remove('navbar-hidden');
+  }
+
+  lastScrollTop = scrollTop;
+});
+
+
+
+
+
+
+window.addEventListener('scroll', () => {
+    let current = "";
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".bottom-nav a");
+
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach((a) => {
+        a.classList.remove("active");
+        if (a.getAttribute("href").includes(current)) {
+            a.classList.add("active");
+        }
+    });
+});
