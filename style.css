@@ -401,6 +401,29 @@ body {
     transition: opacity 0.3
 }
 
+
+/* --- Clickable Card Styles --- */
+.card-container {
+  position: relative; /* Keeps the link contained within the card */
+  cursor: pointer;    /* Gives the user a visual cue it's clickable */
+  transition: transform 0.3s ease;
+}
+
+/* Optional: Slight lift effect when hovering over the card */
+.card-container:hover {
+  transform: translateY(-5px);
+}
+
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1; /* This invisible layer covers the entire card */
+}
+
 form {
     display: grid;
     margin-top: 1.5em;
@@ -452,6 +475,48 @@ a:-webkit-any-link {
     gap:20px;
 }
 
+
+/* Styling the form container specifically */
+.contact-form {
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Visible white-ish border */
+    background: rgba(255, 255, 255, 0.05);     /* Subtle glass tint */
+    padding: 30px;                             /* Space inside the border */
+    border-radius: 15px;                       /* Rounded corners */
+    backdrop-filter: blur(10px);               /* Glass blur effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Ensure inputs inside the border look sharp */
+.contact-form input, 
+.contact-form textarea {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Optional: Make the border glow when the user interacts with the form */
+.contact-form:focus-within {
+    border-color: rgba(102, 126, 234, 0.6); /* Purple/Blue glow */
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+
+#contact {
+    /* The Border */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Soft white border */
+    
+    /* Styling the container */
+    background: rgba(255, 255, 255, 0.03); /* Extremely faint glass tint */
+    border-radius: 20px; /* Rounded corners to match your cards */
+    padding: 40px;
+    margin: 50px auto;
+    max-width: 1100px; /* Keeps the section from stretching too wide */
+    
+    /* Optional: Subtle Outer Glow */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
 .input-row{
     display:flex;
     gap:20px;
@@ -461,14 +526,23 @@ a:-webkit-any-link {
     flex:1;
 }
 
-.contact-form input,
-.contact-form textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    font-size:16px;
-    font-family:inherit;
+.contact-form input, 
+.contact-form textarea {
+    /* Visible border for input fields */
+    border: 1.5px solid rgba(255, 255, 255, 0.3); 
+    background: rgba(0, 0, 0, 0.2); /* Darker background for contrast */
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Change border color when clicking into the box */
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: #667eea; /* Purple/Blue highlight */
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .contact-form textarea{
@@ -476,20 +550,19 @@ a:-webkit-any-link {
 }
 
 .contact-form button{
-    padding:16px;
-    border:none;
-    border-radius:40px;
-    font-size:18px;
-    font-weight:600;
-    color:white;
-    cursor:pointer;
-    background:linear-gradient(90deg,#667eea,#764ba2);
-    transition:0.2s;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .contact-form button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
 }
 
 p {
@@ -1010,7 +1083,7 @@ html {
     
     /* CHANGE THIS LINE: Set your starting color here */
     background-color: #1a1a1a !important; /* A solid dark charcoal */
-    
+    backdrop-filter: blur(15px) !important;
     
     transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.3s ease !important;
     transform: translateY(0);
@@ -1048,3 +1121,159 @@ html {
 
 
 
+.card-container {
+  position: relative; /* Essential for the stretch to stay inside the card */
+}
+
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1; /* Makes the invisible layer cover everything */
+}
+
+
+
+
+
+.work-item {
+    position: relative; /* This is the "anchor" for the stretched link */
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-5px); /* Adds a nice hover lift effect */
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+/* Ensure secondary buttons (like the GitHub link) stay on top so they remain clickable */
+.work-github {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+/* Makes the entire card clickable */
+.work-item {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-8px);
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+/* Keeps GitHub button clickable on top of the stretched link */
+.work-github {
+    position: relative;
+    z-index: 2;
+    padding: 8px 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure the contact form inputs look consistent with your glass theme */
+.contact-form input, .contact-form textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 12px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+/* Ensure the grid is active */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Info on left, Form on right */
+    gap: 40px;
+    padding: 20px;
+    align-items: start;
+    text-align: left; /* Fixes the centering issue */
+}
+
+/* Glass effect for the inputs */
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1); /* Subtle white glass */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+/* The purple Send button */
+.submit-btn {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+    transform: scale(1.05);
+}
+
+/* Vertical stack for the social links */
+.contact-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.contact-btn {
+    text-decoration: none;
+    color: #a0aec0; /* Lighter grey */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    color: #fff;
+}
