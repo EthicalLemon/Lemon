@@ -236,3 +236,54 @@ window.addEventListener('scroll', function() {
 
   lastScrollTop = scrollTop;
 });
+
+
+
+
+
+
+window.addEventListener('scroll', () => {
+    let current = "";
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".bottom-nav a");
+
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach((a) => {
+        a.classList.remove("active");
+        if (a.getAttribute("href").includes(current)) {
+            a.classList.add("active");
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+function openArticle() {
+    document.getElementById("articleModal").style.display = "block";
+    document.body.style.overflow = "hidden"; // Stops the background from scrolling
+}
+
+function closeArticle() {
+    document.getElementById("articleModal").style.display = "none";
+    document.body.style.overflow = "auto"; // Enables scrolling again
+}
+
+// Close the modal if the user clicks outside of the box
+window.onclick = function(event) {
+    let modal = document.getElementById("articleModal");
+    if (event.target == modal) {
+        closeArticle();
+    }
+}
